@@ -1,3 +1,3 @@
 # What's Changed
 
-- first release
+- fix: update script source URL and improve style loading error handling
