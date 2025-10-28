@@ -1,0 +1,20 @@
+{
+  "name": "monorepo",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "dependencies": {
+    "@vitejs/plugin-vue": "6.0.1",
+    "typescript": "5.9.3",
+    "unbuild": "3.6.1",
+    "unocss": "66.5.4",
+    "vite": "7.1.12",
+    "vue": "3.5.22"
+  },
+  "volta": {
+    "node": "24.10.0",
+    "pnpm": "10.19.0"
+  },
+  "packageManager": "pnpm@10.19.0"
+}

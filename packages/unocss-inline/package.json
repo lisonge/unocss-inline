@@ -1,0 +1,51 @@
+{
+  "name": "unocss-inline",
+  "version": "0.1.0",
+  "description": "inline unocss import",
+  "author": "lisonge",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lisonge/unocss-inline.git",
+    "directory": "packages/unocss-inline"
+  },
+  "bugs": {
+    "url": "https://github.com/lisonge/unocss-inline/issues"
+  },
+  "homepage": "https://github.com/lisonge/unocss-inline",
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./style": {
+      "import": "./dist/style.mjs",
+      "types": "./dist/style.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild"
+  },
+  "peerDependencies": {
+    "vite": "*"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    }
+  },
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "dependencies": {
+    "acorn-walk": "^8.3.4",
+    "htmlparser2": "^10.0.0",
+    "magic-string": "^0.30.21"
+  }
+}

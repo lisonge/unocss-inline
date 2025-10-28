@@ -1,0 +1,11 @@
+autoInstallPeers: false
+
+packages:
+  - packages/*
+  - playground/*
+
+onlyBuiltDependencies:
+  - esbuild
+
+publicHoistPattern:
+  - rollup
