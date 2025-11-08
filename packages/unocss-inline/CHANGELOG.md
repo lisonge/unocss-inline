@@ -1,3 +1,3 @@
 # What's Changed
 
-- fix: update script source URL and improve style loading error handling
+- fix: extend timeout for unocss style retrieval in iframe document
