@@ -1,3 +1,3 @@
 # What's Changed
 
-- fix: extend timeout for unocss style retrieval in iframe document
+- fix: ensure document body is available before appending iframe for unocss style
