@@ -11,44 +11,46 @@ if (import.meta.hot) {
   script.type = 'module';
   script.src = new URL('/__uno.css', import.meta['url']).href; // compat https://github.com/lisonge/vite-plugin-monkey
   subDocument.head.appendChild(script);
-  const unocssStyle = await (async () => {
-    const t = Date.now() + 3000;
-    while (Date.now() < t) {
-      await new Promise((r) => setTimeout(r, 100));
-      const style = subDocument.head.querySelector('style');
-      if (style) {
-        return style;
+  (async () => {
+    const unocssStyle = await (async () => {
+      const t = Date.now() + 10_000;
+      while (Date.now() < t) {
+        await new Promise((r) => setTimeout(r, 100));
+        const style = subDocument.head.querySelector('style');
+        if (style) {
+          return style;
+        }
       }
+    })();
+    if (!unocssStyle) {
+      throw new Error('Failed to find unocss style in iframe document');
     }
-  })();
-  if (!unocssStyle) {
-    throw new Error('Failed to find unocss style in iframe document');
-  }
-  const cloneStyles = [unoStyle];
-  const syncStyle = () => {
-    cloneStyles.forEach((style) => {
-      style.textContent = unocssStyle.textContent;
-      Array.from(unocssStyle.attributes).forEach((attr) => {
-        unoStyle.setAttribute(attr.name, attr.value);
+    const cloneStyles = [unoStyle];
+    const syncStyle = () => {
+      cloneStyles.forEach((style) => {
+        style.textContent = unocssStyle.textContent;
+        Array.from(unocssStyle.attributes).forEach((attr) => {
+          unoStyle.setAttribute(attr.name, attr.value);
+        });
       });
-    });
-  };
-  syncStyle();
-  const overrideClone = (style: HTMLStyleElement) => {
-    const cloneFn = style.cloneNode;
-    style.cloneNode = function (subtree?: boolean) {
-      const cloned = cloneFn.call(this, subtree) as HTMLStyleElement;
-      if (subtree) {
-        cloneStyles.push(cloned);
-        overrideClone(cloned);
-      }
-      return cloned;
     };
-  };
-  overrideClone(unoStyle);
-  new MutationObserver(syncStyle).observe(unocssStyle, {
-    characterData: true,
-    childList: true,
-    subtree: true,
-  });
+    syncStyle();
+    const overrideClone = (style: HTMLStyleElement) => {
+      const cloneFn = style.cloneNode;
+      style.cloneNode = function (subtree?: boolean) {
+        const cloned = cloneFn.call(this, subtree) as HTMLStyleElement;
+        if (subtree) {
+          cloneStyles.push(cloned);
+          overrideClone(cloned);
+        }
+        return cloned;
+      };
+    };
+    overrideClone(unoStyle);
+    new MutationObserver(syncStyle).observe(unocssStyle, {
+      characterData: true,
+      childList: true,
+      subtree: true,
+    });
+  })();
 }
