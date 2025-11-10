@@ -1,3 +1,3 @@
 # What's Changed
 
-- fix: ensure document body is available before appending iframe for unocss style
+- fix: improve style synchronization and iframe handling for unocss
