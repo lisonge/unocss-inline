@@ -1,0 +1,45 @@
+{
+  "name": "unocss-inline",
+  "version": "0.2.0",
+  "description": "inline unocss import",
+  "author": "lisonge",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lisonge/unocss-inline.git",
+    "directory": "unocss-inline"
+  },
+  "homepage": "https://github.com/lisonge/unocss-inline",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./style": "./src/style.ts"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/",
+    "exports": {
+      ".": "./dist/index.js",
+      "./style": "./dist/style.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "test": "node --test test/*.test.ts"
+  },
+  "peerDependencies": {
+    "vite": "catalog:"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "htmlparser2": "catalog:",
+    "magic-string": "catalog:"
+  }
+}

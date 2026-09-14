@@ -3,12 +3,15 @@
     "strict": true,
     "target": "ESNext",
     "module": "ESNext",
-    "lib": ["ESNext","DOM"],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "types": ["node"],
     "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "jsx": "preserve",
     "noEmit": true,
     "skipLibCheck": true,
     "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
     "rootDir": "./"
   }
 }

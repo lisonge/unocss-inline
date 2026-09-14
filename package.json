@@ -1,20 +1,31 @@
 {
-  "name": "monorepo",
+  "name": "unocss-workspace",
   "private": true,
   "type": "module",
-  "main": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm --filter unocss-inline test",
+    "dev": "pnpm --filter unocss-example dev"
+  },
   "dependencies": {
-    "@vitejs/plugin-vue": "6.0.1",
-    "typescript": "5.9.3",
-    "unbuild": "3.6.1",
-    "unocss": "66.5.4",
-    "vite": "7.1.12",
-    "vue": "3.5.22"
+    "@types/node": "catalog:",
+    "@vitejs/plugin-vue": "catalog:",
+    "typescript": "catalog:",
+    "tsdown": "catalog:",
+    "unocss": "catalog:",
+    "vite": "catalog:",
+    "vue": "catalog:"
   },
-  "volta": {
-    "node": "24.10.0",
-    "pnpm": "10.19.0"
-  },
-  "packageManager": "pnpm@10.19.0"
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "26.8.2",
+      "onFail": "warn"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.4.1",
+      "onFail": "error"
+    }
+  }
 }
